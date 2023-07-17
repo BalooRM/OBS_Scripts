@@ -1,2 +1,2 @@
 # OBS_Scripts
-a collection of Open Broadcast System (OBS) scripts
+A collection of Open Broadcaster Software (OBS) scripts
