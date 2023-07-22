@@ -39,15 +39,18 @@ class PiP:
         # source must be visible to get width and height
         S.obs_sceneitem_set_visible(scene_item, True) 
         time.sleep(0.05)
+        scale = S.vec2()
+        S.obs_sceneitem_get_scale(scene_item, scale)
         source = S.obs_get_source_by_name(self.source_name)
         srcwidth = S.obs_source_get_width(source)
         srcheight = S.obs_source_get_height(source)
-        pos['UR'].x = scenedim.x - srcwidth
-        pos['LL'].y = scenedim.y - srcheight
-        pos['LR'].x = scenedim.x - srcwidth
-        pos['LR'].y = scenedim.y - srcheight
+        pos['UR'].x = scenedim.x - (srcwidth * scale.x)
+        pos['LL'].y = scenedim.y - (srcheight * scale.y)
+        pos['LR'].x = scenedim.x - (srcwidth * scale.x)
+        pos['LR'].y = scenedim.y - (srcheight * scale.y)
         
         print(' '.join(['Source dimensions:', str(srcwidth), 'x', str(srcheight)]))
+        print(' '.join(['Scale:', str(scale.x), 'x', str(scale.y)]))
         # set the position
         S.obs_sceneitem_set_pos(scene_item, pos[pstr])
         S.obs_scene_release(current_scene)
