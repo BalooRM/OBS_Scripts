@@ -50,6 +50,7 @@ class PiP:
         pos['LR'].y = scenedim.y - (srcheight * scale.y)
         
         print(' '.join(['Source dimensions:', str(srcwidth), 'x', str(srcheight)]))
+        print(' '.join(['Position:', str(pos[pstr].x), ',', str(pos[pstr].y)]))
         print(' '.join(['Scale:', str(scale.x), 'x', str(scale.y)]))
         # set the position
         S.obs_sceneitem_set_pos(scene_item, pos[pstr])
